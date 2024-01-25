@@ -40,7 +40,7 @@ def create_requests(years, months, leadtime_months, aoi_bbox):
             })
     return requests
 
-# Creating requests for 2019-2022 and 2023
+# Creating requests for 2019-2022 and 2023 for testing purposes
 requests_2019_2022 = create_requests(range(2019, 2023), range(1, 13), range(1, 5), aoi_bbox)
 requests_2023 = create_requests([2023], range(1, 10), range(1, 5), aoi_bbox)
 
