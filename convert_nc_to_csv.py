@@ -12,7 +12,7 @@ for filename in os.listdir(data_directory):
         dataset = xr.open_dataset(filepath)
 
         # Convert the dataset to a Pandas DataFrame for tabular format
-        df = dataset.to_dataframe()
+        df = dataset.to_dataframe().reset_index()
 
         # Determine the output CSV filename based on the input filename
         csv_filename = os.path.splitext(filename)[0] + '.csv'
