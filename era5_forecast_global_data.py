@@ -10,7 +10,7 @@ if not os.path.exists(output_path):
 c = cdsapi.Client()
 
 def download_era5_data_single_request(years, months, format='grib'):
-    filename = f"ERA5_total_precipitation_global_1981_2023_all_months.{format}"
+    filename = f"ERA5_total_precipitation_central_america_1981_2023_all_months.{format}"
     filepath = os.path.join(output_path, filename)
     c.retrieve(
         'reanalysis-era5-single-levels-monthly-means',
@@ -21,6 +21,7 @@ def download_era5_data_single_request(years, months, format='grib'):
             'month': months,
             'time': '00:00',
             'format': format,
+            'area': [18.885498, -92.351074, 6.009459, -77.343750],
         },
         filepath)
     print(f"Downloaded: {filepath}")

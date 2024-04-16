@@ -21,6 +21,7 @@ def create_single_request(years, months, leadtime_months):
         'month': [f"{month:02d}" for month in months],
         'leadtime_month': [str(leadtime_month) for leadtime_month in leadtime_months],
         # 'area' parameter removed to target the whole globe
+        'area': [18.885498, -92.351074, 6.009459, -77.343750],
     }
 
 # Adjusting for all available lead times
@@ -34,7 +35,7 @@ single_request = create_single_request(available_years, range(1, 13), all_leadti
 
 # Downloading data with a single request
 def download_single_request(request, path):
-    target_filename = "ecmwf_forecast_global_all_years.grib"
+    target_filename = "ecmwf_forecast_central_america_all_years.grib"
     request['target'] = os.path.join(path, target_filename)
     client.retrieve('seasonal-monthly-single-levels', request, request['target'])
     print(f"Downloaded {target_filename}")
